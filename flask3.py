@@ -58,5 +58,13 @@ def view_session_1 ():
     data = session["nilai"]
     return f"nilai sesion adalah {data}"
 
+#logout / destroy session
+@app.route ("/halaman/logout")
+def logout_session_1 ():
+    session.pop ("nilai")
+    return "Berhasil Logout"
+
+
+    
 if __name__ == "__main__":
     app.run (debug=True)
