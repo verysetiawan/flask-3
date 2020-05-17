@@ -31,9 +31,16 @@ def mainlay():
 #MATERI PARSING DI FLASK
 #parsing nilai integer
 
-@app.route("/parsing/<int:nilaiku>")
-def parsku(nilaiku):
-    return f"nilainya adalah : {nilaiku}"
+@app.route("/parsingint/<int:nilaiku2>")
+def parsint(nilaiku2):
+    return f"nilainya integer adalah : {nilaiku2}"
+
+#parsing nilai string
+
+@app.route("/parsingstr/<string:nilaiku>")
+def parsstr(nilaiku):
+    return f"isinya string adalah : {nilaiku}"
+
 
 if __name__ == "__main__":
     app.run (debug=True)
