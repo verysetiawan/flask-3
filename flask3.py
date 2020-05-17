@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -30,17 +30,20 @@ def mainlay():
 
 #MATERI PARSING DI FLASK
 #parsing nilai integer
-
 @app.route("/parsingint/<int:nilaiku2>")
 def parsint(nilaiku2):
     return f"nilainya integer adalah : {nilaiku2}"
 
 #parsing nilai string
-
 @app.route("/parsingstr/<string:nilaiku>")
 def parsstr(nilaiku):
     return f"isinya string adalah : {nilaiku}"
 
+#argument parser
+@app.route("/parsarg")
+def parsarg():
+    data = request.args.get("nilai")
+    return f"isi dari argument parser adalah {data}" 
 
 if __name__ == "__main__":
     app.run (debug=True)
