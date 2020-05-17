@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 
 app = Flask(__name__)
+app.config ["SECRET_KEY"] = "IniSecretKeyKu2020"
 
 #membuat route untuk halaman /index dengan nama fungsi (def) indexku
 @app.route("/index")
@@ -44,6 +45,18 @@ def parsstr(nilaiku):
 def parsarg():
     data = request.args.get("nilai")
     return f"isi dari argument parser adalah {data}" 
+
+#memparsing nilai untu diset di sesion url
+@app.route ("/halaman/<int:nilaiku>")
+def session_1 (nilaiku):
+    session["nilai"] = nilaiku
+    return "Data yang dinputkan berhasil"
+
+#menampilkan parsing ke halaman view
+@app.route ("/halaman/view")
+def view_session_1 ():
+    data = session["nilai"]
+    return f"nilai sesion adalah {data}"
 
 if __name__ == "__main__":
     app.run (debug=True)
