@@ -55,8 +55,11 @@ def session_1 (nilaiku):
 #menampilkan parsing ke halaman view
 @app.route ("/halaman/view")
 def view_session_1 ():
-    data = session["nilai"]
-    return f"nilai sesion adalah {data}"
+    try:
+        data = session["nilai"]
+        return f"nilai sesion adalah {data}"
+    except:
+        return "Anda tidak memiliki session lagi"
 
 #logout / destroy session
 @app.route ("/halaman/logout")
@@ -65,6 +68,6 @@ def logout_session_1 ():
     return "Berhasil Logout"
 
 
-    
+
 if __name__ == "__main__":
     app.run (debug=True)
