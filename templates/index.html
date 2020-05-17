@@ -1,0 +1,47 @@
+<html>
+    <head></head>
+    <body>
+        <div>==================================================================================</div>
+        <h1>Hallo python flask!!!</h1>
+        <p>selamat datang di website flask pada python, kali ini halaman ini ditulis menggunakan templating</p>
+        <div>==================================================================================</div>
+        <p>pada halaman ini ditambahkan nilaiku yaitu : <strong>{{var1}}</strong></p> <!--nilai-->
+        <div>==================================================================================</div>
+        <!--menambahkan sintaks jinja2 yang berupa perulangan-->
+        <p>tambahan pada halaman ini adalah terdapat nama-nama hari dari parsing python, yaitu:</p>
+        <div>
+            {% for hariku in var2%}         <!--sintaks jinja2 memulai for-->
+                <li>hari {{hariku}}</li>    <!--memanggil nilai variabel hariku-->
+            {% endfor %}                    <!--sintaks jinja2 mengakhiri for-->
+        </div>
+        <div>==================================================================================</div>
+        <!--menambahkan sintaks jinja2 yang berupa kondisi-->
+        <p>tambahan halaman ini adalah kondisi jika hari minggu berarti:</p>
+        <div>
+            {%if var3 == "minggu"%}         <!--sintaks jinja2 memulai if-->
+            <p>hari libur</p>               <!--kondisi-->
+            {%else%}                        <!--sintaks jinja2 else-->
+            <p>hari kerja</p>               <!--kondisi-->
+            {%endif%}                       <!--sintaks jinja2 mengakhiri if-->
+        </div>
+        <div>==================================================================================</div>
+        <!--menambahkan sintaks jinja2 yang berupa  set variabel-->
+        <p>tambahan halaman ini adalah set variabel yang berarti hari jum'at adalah:</p>
+            {%set coba = "jumat berkah"%}
+            <p>{{coba}}</p>
+        <div>==================================================================================</div>
+         <!--menggabungkan sintaks jinja2 yang berupa perulangan dan kondisi-->
+         <p>tambahan halaman ini adalah penggabungan perulangan dan kondisi yaitu bahwa:</p>
+        <div>
+            {% for hariku in var2%}
+                {%if hariku == "minggu"%}
+                    <p>hari <strong>{{hariku}}</strong> adalah juga hari <strong>libur</strong></p>
+                {%elif hariku == "sabtu"%}
+                    <p>hari <strong>{{hariku}}</strong> adalah hari <strong>libur</strong></p>
+                {%else%}
+                    <p>hari <strong>{{hariku}}</strong> adalah hari <strong>kerja</strong></p>
+                {%endif%}
+            {% endfor %}
+        </div>
+    </body>
+</html>
